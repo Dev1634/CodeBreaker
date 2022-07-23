@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 using namespace std;
 typedef long long ll;
 
@@ -7,21 +8,15 @@ int main() {
     
     while(t--) {
         string s; cin >> s;
-        int a[s.size() + 1];
-        int ans = 0;
+        stack<char> st;
 
-        a[s.size()] = 0;
-        for (int i = s.size() - 1; i >= 0; i--) {
-            a[i] = 0;
-
-            if (s[i] == 'A') {
-                if (a[i + 1] > 0) a[i] = a[i + 1] - 1;
-                else ans++;
-            } else a[i] = a[i + 1] + 1;
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == 'B') {
+                if (st.size() == 0) st.push('B');
+                else st.pop();
+            } else st.push('A');
         }
 
-        if (a[0] % 2 == 1) ans++;
-
-        cout << ans << '\n';
+        cout << st.size() << '\n';
     }
 }
