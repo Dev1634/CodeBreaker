@@ -8,13 +8,6 @@ typedef long long ll;
 ll r, c, k, ans;
 
 int main() {
-    // // Subtask 1 (R = 1, 1 ≤ C ≤ 2000, 1 ≤ K ≤ 1e9, 1 ≤ Mi,j ≤ 300)
-    // // Subtask 2 (1 ≤ R, C ≤ 40, 1 ≤ K ≤ 1e9, 1 ≤ Mi,j ≤ 300)
-    // // Subtask 3 (1 ≤ R, C ≤ 400, 1 ≤ K ≤ 1e9, 1 ≤ Mi,j ≤ 300)
-    // // Subtask 4 (1 ≤ R, C ≤ 2000, K = 1, 1 ≤ Mi,j ≤ 300)
-    // // Subtask 5 (1 ≤ R, C ≤ 2000, 1 ≤ K ≤ 1e9, 1 ≤ Mi,j ≤ 300, all values of Mi,j are equal)
-    // Subtask 6 (1 ≤ R, C ≤ 2000, 1 ≤ K ≤ 1e9, 1 ≤ Mi,j ≤ 300)
-    
     scanf("%lld %lld %lld", &r, &c, &k);
     ll graph[r + 2][c + 2], sum[r + 2][c + 2];
 
@@ -29,25 +22,6 @@ int main() {
             if (i == 1 && j == 1) x = graph[i][j];
             else if (graph[i][j] != x) all_equal = 0;
         }
-    }
-
-    if (k == 1) { // Subtask 4
-        for (ll l = 0; l < min(r, c); l++) {
-            ans += (r - l) * (c - l);
-        }
-
-        printf("%lld\n", ans);
-        return 0;
-    }
-
-    if (all_equal) { // Subtask 5
-        for (ll l = 0; l < min(r, c); l++) {
-            if ((l + 1) * (l + 1) * x < k) continue;
-            ans += (r - l) * (c - l);
-        }
-
-        printf("%lld\n", ans);
-        return 0;
     }
 
     for (ll i = 1; i <= r; i++) {
